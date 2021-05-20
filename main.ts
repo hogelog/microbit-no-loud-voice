@@ -1,31 +1,10 @@
-let 声が大きい = false
-music.setVolume(255)
-basic.forever(function () {
-    if (声が大きい) {
-        music.ringTone(587)
-        basic.showLeds(`
-            . . . . .
-            # . . . #
-            . # . # .
-            . . . . .
-            . # # # .
-            `)
-    } else {
-        music.stopAllSounds()
-        basic.showLeds(`
-            . . . . .
-            . # . # .
-            . . . . .
-            # . . . #
-            . # # # .
-            `)
-    }
+input.onSound(DetectedSound.Loud, function () {
+    basic.showIcon(IconNames.Angry)
+    music.startMelody(music.builtInMelody(Melodies.Wawawawaa), MelodyOptions.Once)
+    basic.pause(1000)
+    music.stopAllSounds()
+    basic.showIcon(IconNames.Happy)
 })
-basic.forever(function () {
-    if (input.soundLevel() >= 140) {
-        声が大きい = true
-        basic.pause(1500)
-    } else {
-        声が大きい = false
-    }
-})
+music.setVolume(120)
+input.setSoundThreshold(SoundThreshold.Loud, 140)
+basic.showIcon(IconNames.Happy)
