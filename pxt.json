@@ -1,5 +1,6 @@
 {
     "name": "大声防止",
+    "version": "0.1.0",
     "description": "",
     "dependencies": {
         "core": "*",
